@@ -50,10 +50,10 @@ server {
 }
 EOF
 
-apt-install-if-needed nginx-full
+apt-install nginx
 # sudo mv /tmp/nginx.conf /etc/nginx/nginx.conf
 sudo mv /tmp/taiga.conf /etc/nginx/sites-available/taiga
 sudo rm -rf /etc/nginx/sites-enabled/taiga
 sudo rm -rf /etc/nginx/sites-enabled/default
 sudo ln -s /etc/nginx/sites-available/taiga /etc/nginx/sites-enabled/taiga
-sudo service nginx restart
+sudo systemctl restart nginx

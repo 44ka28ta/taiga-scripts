@@ -34,5 +34,5 @@ function rabbit-activate-plugin {
 if [ ! -e ~/.setup/rabbitmq ]; then
     touch ~/.setup/rabbitmq
 
-    apt-install-if-needed rabbitmq-server
+    apt-install rabbitmq-server
 fi

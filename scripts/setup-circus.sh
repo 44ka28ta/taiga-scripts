@@ -1,6 +1,11 @@
 #!/bin/bash
 
-apt-install-if-needed circus
+CIRCUS_REPOS_URL='http://download.opensuse.org/repositories/home:/marec2000:/python/openSUSE_Leap_42.3/'
+CIRCUS_ALIAS='PythonCircus'
+
+sudo zypper addrepo ${CIRCUS_REPOS_URL} ${CIRCUS_ALIAS}
+
+apt-install python-circus
 
 cat > /tmp/taiga-circus.ini <<EOF
 [watcher:taiga]
@@ -33,6 +38,6 @@ EOF
 if [ ! -e ~/.setup/circus ]; then
     sudo mv /tmp/taiga-circus.ini /etc/circus/conf.d/taiga.ini
 
-    sudo service circusd restart
+    sudo systemctl restart circusd
     touch ~/.setup/circus
 fi
