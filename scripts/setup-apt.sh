@@ -1,10 +1,11 @@
 
 ZYPPER_OPTIONS='--gpg-auto-import-keys --non-interactive'
+ZYPPER_INSTALL_OPTIONS='--force-resolution'
 
 function apt_install {
     for pkg in $@; do
-        echo -e "[APT-GET] Installing package $pkg..."
-        sudo zypper ${ZYPPER_OPTIONS} install $pkg
+        echo -e "[ZYPPER] Installing package $pkg..."
+        sudo zypper ${ZYPPER_OPTIONS} install ${ZYPPER_INSTALL_OPTIONS} $pkg
     done
 }
 
@@ -18,7 +19,7 @@ function apt_install {
 #}
 
 function apt_install_build_essential {
-	sudo zypper ${ZYPPER_OPTIONS} install --type pattern devel_basis
+	sudo zypper ${ZYPPER_OPTIONS} install ${ZYPPER_INSTALL_OPTIONS} --type pattern devel_basis
 }
 
 
