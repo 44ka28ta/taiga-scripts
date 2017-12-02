@@ -30,16 +30,16 @@ SERVER_EMAIL = DEFAULT_FROM_EMAIL
 EOF
 
 if [ ! -e ~/taiga-back ]; then
-    createdb-if-needed taiga
+    createdb_if_needed taiga
     git clone https://github.com/taigaio/taiga-back.git taiga-back
 
     pushd ~/taiga-back
     git checkout -f stable
 
-    # rabbit-create-user-if-needed taiga taiga  # username, password
-    # rabbit-create-vhost-if-needed taiga
-    # rabbit-set-permissions taiga taiga ".*" ".*" ".*" # username, vhost, configure, read, write
-    mkvirtualenv-if-needed taiga
+    # rabbit_create_user_if_needed taiga taiga  # username, password
+    # rabbit_create_vhost_if_needed taiga
+    # rabbit_set_permissions taiga taiga ".*" ".*" ".*" # username, vhost, configure, read, write
+    mkvirtualenv_if_needed taiga
 
     # Settings
     mv /tmp/settings.py settings/local.py

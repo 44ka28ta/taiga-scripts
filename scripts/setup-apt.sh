@@ -1,7 +1,7 @@
 
 ZYPPER_OPTIONS='--gpg-auto-import-keys --non-interactive'
 
-function apt-install {
+function apt_install {
     for pkg in $@; do
         echo -e "[APT-GET] Installing package $pkg..."
         sudo zypper ${ZYPPER_OPTIONS} install $pkg
@@ -9,20 +9,20 @@ function apt-install {
 }
 
 
-#function apt-install-if-needed {
+#function apt_install_if_needed {
 #    for pkg in $@; do
-#        if package-not-installed $pkg; then
-#            apt-install $pkg
+#        if package_not_installed $pkg; then
+#            apt_install $pkg
 #        fi
 #    done
 #}
 
-function apt-install-build-essential {
+function apt_install_build_essential {
 	sudo zypper ${ZYPPER_OPTIONS} install --type pattern devel_basis
 }
 
 
-#function package-not-installed {
+#function package_not_installed {
 #    test -z "$(sudo dpkg -s $1 2> /dev/null | grep Status)"
 #}
 

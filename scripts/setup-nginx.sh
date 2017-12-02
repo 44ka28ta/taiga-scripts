@@ -50,7 +50,7 @@ server {
 }
 EOF
 
-apt-install nginx
+apt_install nginx
 # sudo mv /tmp/nginx.conf /etc/nginx/nginx.conf
 sudo mv /tmp/taiga.conf /etc/nginx/sites-available/taiga
 sudo rm -rf /etc/nginx/sites-enabled/taiga

@@ -5,7 +5,7 @@ CIRCUS_ALIAS='PythonCircus'
 
 sudo zypper addrepo ${CIRCUS_REPOS_URL} ${CIRCUS_ALIAS}
 
-apt-install python-circus
+apt_install python-circus
 
 cat > /tmp/taiga-circus.ini <<EOF
 [watcher:taiga]

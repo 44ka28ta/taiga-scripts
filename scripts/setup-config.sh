@@ -30,7 +30,7 @@ set encoding=utf8
 EOF
 
 cat > ~/.tmux-conf.sh <<EOF
-function taiga-runserver {
+function taiga_runserver {
     session=taiga
     state=\$(tmux ls 2>/dev/null)
     if \$(echo $state | grep -q "\$session"); then
@@ -45,7 +45,7 @@ function taiga-runserver {
     fi
 }
 
-function taiga-runserver-back {
+function taiga_runserver_back {
     circusctl stop taiga
     workon taiga
     cd ~/taiga-back

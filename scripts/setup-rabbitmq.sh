@@ -1,17 +1,17 @@
 # rabbitmq.sh
 
-function rabbit-create-user-if-needed {
+function rabbit_create_user_if_needed {
     username=$1
     password=$2
     $(sudo rabbitmqctl list_users | grep -q "$username") || sudo rabbitmqctl add_user $username $password
 }
 
-function rabbit-create-vhost-if-needed {
+function rabbit_create_vhost_if_needed {
     vhost=$1
     $(sudo rabbitmqctl list_vhosts | grep -q "$vhost") || sudo rabbitmqctl add_vhost $vhost
 }
 
-function rabbit-set-permissions {
+function rabbit_set_permissions {
     username=$1
     vhost=$2
     configure=$3
@@ -20,7 +20,7 @@ function rabbit-set-permissions {
     sudo rabbitmqctl set_permissions -p $vhost $username "$configure" "$write" "$read"
 }
 
-function rabbit-activate-plugin {
+function rabbit_activate_plugin {
     plugin=$1
     if ! grep -q "$plugin" /etc/rabbitmq/enabled_plugins; then
         sudo rabbitmq-plugins enable "$plugin"
@@ -34,5 +34,5 @@ function rabbit-activate-plugin {
 if [ ! -e ~/.setup/rabbitmq ]; then
     touch ~/.setup/rabbitmq
 
-    apt-install rabbitmq-server
+    apt_install rabbitmq-server
 fi
