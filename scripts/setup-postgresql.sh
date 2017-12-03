@@ -18,6 +18,8 @@ if [ ! -e ~/.setup/postgresql ]; then
     apt_install postgresql95 postgresql95-contrib \
         postgresql95-server postgresql95-devel
 
+    sudo systemctl start postgresql
+
     sudo -u postgres createuser --superuser $USER &> /dev/null
     sudo -u postgres createdb $USER &> /dev/null
 

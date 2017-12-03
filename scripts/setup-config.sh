@@ -1,5 +1,12 @@
 #!/bin/bash
 
+SETUP_DIR_PATH='~/.setup'
+
+if [ ! -e ${SETUP_DIR_PATH} ] && [ ! -f ${SETUP_DIR_PATH} ]; then
+	mkdir -p ${SETUP_DIR_PATH}
+	chmod ${USER}:${GROUP} ${SETUP_DIR_PATH}
+fi
+
 cat > ~/.vimrc <<EOF
 set nocompatible
 
