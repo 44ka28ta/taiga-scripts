@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SETUP_DIR_PATH='~/.setup'
+SETUP_DIR_PATH="${HOME}/.setup"
 
 if [ ! -e ${SETUP_DIR_PATH} ]; then
 	mkdir -p ${SETUP_DIR_PATH}

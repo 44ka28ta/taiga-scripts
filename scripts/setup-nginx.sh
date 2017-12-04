@@ -52,8 +52,15 @@ EOF
 
 apt_install nginx
 # sudo mv /tmp/nginx.conf /etc/nginx/nginx.conf
-sudo mv /tmp/taiga.conf /etc/nginx/sites-available/taiga
-sudo rm -rf /etc/nginx/sites-enabled/taiga
-sudo rm -rf /etc/nginx/sites-enabled/default
-sudo ln -s /etc/nginx/sites-available/taiga /etc/nginx/sites-enabled/taiga
+
+SITES_AVAIL_PATH="/etc/nginx/sites-available"
+SITES_ENABLED_PATH="/etc/nginx/sites-enabled"
+
+sudo mkdir -p ${SITES_AVAIL_PATH}
+sudo mkdir -p ${SITES_ENABLED_PATH}
+
+sudo mv /tmp/taiga.conf ${SITES_AVAIL_PATH}/taiga
+sudo rm -rf ${SITES_ENABLED_PATH}/taiga
+sudo rm -rf ${SITES_ENABLED_PATH}/default
+sudo ln -s ${SITES_AVAIL_PATH}/taiga ${SITES_ENABLED_PATH}/taiga
 sudo systemctl restart nginx
