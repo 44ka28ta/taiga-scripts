@@ -47,5 +47,7 @@ if [ ! -e ~/.setup/circus ]; then
     sudo mv /tmp/taiga-circus.ini /etc/circus/conf.d/taiga.ini
 
     sudo systemctl restart circus
+	circusctl start taiga
+    echo "circusctl start taiga" >> /etc/rc.d/boot.local
     touch ~/.setup/circus
 fi
