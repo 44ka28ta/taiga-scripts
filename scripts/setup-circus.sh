@@ -9,10 +9,11 @@ apt_install python-circus
 
 ##
 ## Fix for the lacking circus-web package.
-sudo pip install circus-web
+sudo pip3 install circus-web
 sudo mkdir -p /var/log/circus
 
 sudo systemctl start circus
+sudo systemctl enable circus
 
 cat > /tmp/taiga-circus.ini <<EOF
 [watcher:taiga]

@@ -63,4 +63,6 @@ sudo mv /tmp/taiga.conf ${SITES_AVAIL_PATH}/taiga
 sudo rm -rf ${SITES_ENABLED_PATH}/taiga
 sudo rm -rf ${SITES_ENABLED_PATH}/default
 sudo ln -s ${SITES_AVAIL_PATH}/taiga ${SITES_ENABLED_PATH}/taiga
+sudo sed -i 's/include vhosts.d\/\*\.conf;/include sites-enabled\/*;/' /etc/nginx/nginx.conf
 sudo systemctl restart nginx
+sudo systemctl enable nginx

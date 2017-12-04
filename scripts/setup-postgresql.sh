@@ -19,6 +19,7 @@ if [ ! -e ~/.setup/postgresql ]; then
         postgresql95-server postgresql95-devel
 
     sudo systemctl start postgresql
+	sudo systemctl enable postgresql
 
     sudo -u postgres createuser --superuser $USER &> /dev/null
     sudo -u postgres createdb $USER &> /dev/null

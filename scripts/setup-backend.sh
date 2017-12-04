@@ -45,14 +45,14 @@ if [ ! -e ~/taiga-back ]; then
     mv /tmp/settings.py settings/local.py
     workon taiga
 
-    pip install -r requirements.txt
-    python manage.py migrate --noinput
-    python manage.py compilemessages
-    python manage.py collectstatic --noinput
-    python manage.py loaddata initial_user
-    python manage.py loaddata initial_project_templates
-    python manage.py sample_data
-    python manage.py rebuild_timeline --purge
+    pip3 install -r requirements.txt
+    python3 manage.py migrate --noinput
+    python3 manage.py compilemessages
+    python3 manage.py collectstatic --noinput
+    python3 manage.py loaddata initial_user
+    python3 manage.py loaddata initial_project_templates
+    python3 manage.py sample_data
+    python3 manage.py rebuild_timeline --purge
 
     deactivate
     popd
@@ -63,10 +63,10 @@ else
     git reset --hard origin/stable
 
     workon taiga
-    pip install -r requirements.txt
-    python manage.py migrate --noinput
-    python manage.py compilemessages
-    python manage.py collectstatic --noinput
+    pip3 install -r requirements.txt
+    python3 manage.py migrate --noinput
+    python3 manage.py compilemessages
+    python3 manage.py collectstatic --noinput
     sudo systemctl restart circus
     popd
 fi

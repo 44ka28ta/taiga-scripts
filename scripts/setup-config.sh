@@ -56,7 +56,7 @@ function taiga_runserver_back {
     circusctl stop taiga
     workon taiga
     cd ~/taiga-back
-    python manage.py runserver 127.0.0.1:8001
+    python3 manage.py runserver 127.0.0.1:8001
 }
 EOF
 
