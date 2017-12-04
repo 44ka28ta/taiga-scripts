@@ -7,6 +7,13 @@ sudo zypper addrepo ${CIRCUS_REPOS_URL} ${CIRCUS_ALIAS}
 
 apt_install python-circus
 
+##
+## Fix for the lacking circus-web package.
+sudo pip install circus-web
+sudo mkdir -p /var/log/circus
+
+sudo systemctl start circus
+
 cat > /tmp/taiga-circus.ini <<EOF
 [watcher:taiga]
 working_dir = /home/$USER/taiga-back
@@ -38,6 +45,6 @@ EOF
 if [ ! -e ~/.setup/circus ]; then
     sudo mv /tmp/taiga-circus.ini /etc/circus/conf.d/taiga.ini
 
-    sudo systemctl restart circusd
+    sudo systemctl restart circus
     touch ~/.setup/circus
 fi
