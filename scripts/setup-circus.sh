@@ -48,6 +48,6 @@ if [ ! -e ~/.setup/circus ]; then
 
     sudo systemctl restart circus
 	circusctl start taiga
-    echo "circusctl start taiga" >> /etc/rc.d/boot.local
+	sudo sed -i '/ExecStart=.*$/a ExecStartPost=/usr/bin/circusctl start taiga' /etc/systemd/system/multi-user.target.wants/circus.service
     touch ~/.setup/circus
 fi
