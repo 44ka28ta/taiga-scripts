@@ -12,8 +12,6 @@ apt_install python-circus
 sudo pip3 install circus-web
 sudo mkdir -p /var/log/circus
 
-sudo systemctl start circus
-sudo systemctl enable circus
 
 cat > /tmp/taiga-circus.ini <<EOF
 [watcher:taiga]
@@ -46,8 +44,11 @@ EOF
 if [ ! -e ~/.setup/circus ]; then
     sudo mv /tmp/taiga-circus.ini /etc/circus/conf.d/taiga.ini
 
-    sudo systemctl restart circus
+	sudo systemctl start circus
 	circusctl start taiga
 	sudo sed -i '/ExecStart=.*$/a ExecStartPost=/usr/bin/circusctl start taiga' /etc/systemd/system/multi-user.target.wants/circus.service
+
+	sudo systemctl enable circus
+
     touch ~/.setup/circus
 fi
