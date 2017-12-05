@@ -2,7 +2,7 @@
 
 function createdb_if_needed {
     for dbname in $@; do
-        $(psql -l | grep -q "$dbname") || createdb "$dbname"
+        $(psql -l | grep -q "$dbname") || createdb "$dbname" --encoding='utf-8' --locale=en_US.utf8 --template=template0
     done
 }
 
