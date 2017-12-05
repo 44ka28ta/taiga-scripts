@@ -62,12 +62,16 @@ else
     git checkout -f stable
     git reset --hard origin/stable
 
+    mv /tmp/settings.py settings/local.py
     workon taiga
+
     pip3 install -r requirements.txt
     python3 manage.py migrate --noinput
     python3 manage.py compilemessages
     python3 manage.py collectstatic --noinput
     sudo systemctl restart circus
+
+	deactivate
     popd
 fi
 
