@@ -7,8 +7,8 @@ pushd ~
 cat > /tmp/settings.py <<EOF
 from .common import *
 
-MEDIA_URL = "/media/"
-STATIC_URL = "/static/"
+MEDIA_URL = "$hostname:8000/media/"
+STATIC_URL = "$hostname:8000/static/"
 
 # This should change if you want generate urls in emails
 # for external dns.
