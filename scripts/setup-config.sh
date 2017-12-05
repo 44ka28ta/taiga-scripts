@@ -2,6 +2,7 @@
 
 SETUP_DIR_PATH="${HOME}/.setup"
 
+
 if [ ! -e ${SETUP_DIR_PATH} ]; then
 	mkdir -p ${SETUP_DIR_PATH}
 	#chmod ${USER}:${GROUP} ${SETUP_DIR_PATH}

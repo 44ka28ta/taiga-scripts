@@ -1,10 +1,11 @@
 #!/bin/bash
 
+
 cat > /tmp/taiga.conf <<EOF
 server {
     listen 80 default_server;
     listen 8000 default_server;
-    server_name _;
+    server_name $hostname;
 
     large_client_header_buffers 4 32k;
 

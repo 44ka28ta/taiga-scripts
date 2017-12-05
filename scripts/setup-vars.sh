@@ -5,11 +5,11 @@ if [ -e ~/.setup/data.sh ]; then
 else
     echo -n "Scheme (default http): "
     read scheme
-    echo -n "Hostname (default: localhost:8000): "
+    echo -n "Hostname (default: localhost): "
     read hostname
 
     if [ -z "$hostname" ]; then
-        hostname="localhost:8000"
+        hostname="localhost"
     fi
 
     if [ -z "$scheme" ]; then
