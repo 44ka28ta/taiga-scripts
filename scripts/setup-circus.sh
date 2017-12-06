@@ -44,11 +44,10 @@ EOF
 if [ ! -e ~/.setup/circus ]; then
     sudo mv /tmp/taiga-circus.ini /etc/circus/conf.d/taiga.ini
 
-	sudo systemctl start circus
-	circusctl start taiga
+	sudo systemctl enable circus
 	sudo sed -i '/ExecStart=.*$/a ExecStartPost=/usr/bin/circusctl start taiga' /etc/systemd/system/multi-user.target.wants/circus.service
 
-	sudo systemctl enable circus
+	sudo systemctl start circus
 
     touch ~/.setup/circus
 fi
