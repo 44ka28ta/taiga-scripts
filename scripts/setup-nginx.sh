@@ -6,7 +6,7 @@ if [ "$scheme" = "https" ]; then
 
     DHPARAM_PATH='/etc/ssl/dhparam.pem'
 
-    sudo openssl dhparam 2048 -out /etc/ssl/dhparam.pem
+    sudo openssl dhparam 2048 -out ${DHPARAM_PATH}
 
 
     cat > /tmp/taiga.conf <<EOF
