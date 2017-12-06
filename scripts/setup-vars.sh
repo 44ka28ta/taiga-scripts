@@ -15,7 +15,18 @@ else
     if [ -z "$scheme" ]; then
         scheme="http"
     fi
+
+    if [ "$scheme" = "https" ]; then
+        echo -n "Server Certificate File: "
+        read input_cert_file
+        cert_file=`readlink -f ${input_cert_file}`
+        echo -n "Server Key File: "
+        read input_key_file
+        key_file=`readlink -f ${input_key_file}`
+        echo "Installing taigaio with user=$USER host=$hostname scheme=$scheme cert_file=$cert_file key_file=$key_file"
+    else
+        echo "Installing taigaio with user=$USER host=$hostname scheme=$scheme"
+    fi
 fi
 
-echo "Installing taigaio with user=$USER host=$hostname scheme=$scheme"
 sleep 2

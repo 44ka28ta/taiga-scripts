@@ -7,11 +7,12 @@ pushd ~
 cat > /tmp/settings.py <<EOF
 from .common import *
 
-MEDIA_URL = "http://$hostname/media/"
-STATIC_URL = "http://$hostname/static/"
+MEDIA_URL = "$scheme://$hostname/media/"
+STATIC_URL = "$scheme://$hostname/static/"
 
 # This should change if you want generate urls in emails
 # for external dns.
+SITES["front"]["scheme"] = "$scheme"
 SITES["front"]["domain"] = "$hostname"
 
 DEBUG = True
@@ -57,25 +58,18 @@ if [ ! -e ~/taiga-back ]; then
     deactivate
     popd
 else
-    createdb_if_needed taiga
     pushd ~/taiga-back
     git fetch
     git checkout -f stable
     git reset --hard origin/stable
 
-    mkvirtualenv_if_needed taiga
-
-    mv /tmp/settings.py settings/local.py
     workon taiga
-
     pip3 install -r requirements.txt
-    #python3 manage.py migrate --noinput
-    #python3 manage.py compilemessages
-    #python3 manage.py collectstatic --noinput
+    python3 manage.py migrate --noinput
+    python3 manage.py compilemessages
+    python3 manage.py collectstatic --noinput
     sudo systemctl restart circus
-
-	deactivate
-    popd
+	popd
 fi
 
 popd

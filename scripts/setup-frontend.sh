@@ -6,7 +6,7 @@ pushd ~
 
 cat > /tmp/conf.json <<EOF
 {
-    "api": "/api/v1/",
+    "api": "$scheme://$hostname/api/v1/",
     "eventsUrl": null,
     "debug": "true",
     "publicRegisterEnabled": true,
